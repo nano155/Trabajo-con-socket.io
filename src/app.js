@@ -50,6 +50,7 @@ socketServer.on('connection', async socket=>{
   socket.on('delete', async data=>{
     await productos.deleteProduct(data)
     const nuevosProductos = await productos.getProducts()
+    console.log(nuevosProductos);
     socket.emit('delete-product', nuevosProductos)
   })
 })

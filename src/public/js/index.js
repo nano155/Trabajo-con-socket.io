@@ -42,7 +42,7 @@ divAdd.addEventListener('click', (e)=>{
 formulario.addEventListener('submit', (e) => {
     e.preventDefault()
     const form = {
-        id:Math.floor(Math.random() * 999999),
+        id:Math.floor(Math.random() * 999999).toString(),
         title: formulario.querySelector('#title').value,
         description: formulario.querySelector('#description').value,
         code: formulario.querySelector('#code').value,
@@ -50,6 +50,7 @@ formulario.addEventListener('submit', (e) => {
         stock: formulario.querySelector('#stock').value,
         category: formulario.querySelector('#category').value,
     }
+    console.log(form);
     socket.emit('form', form)
     formulario.querySelector('#title').value = ''
     formulario.querySelector('#description').value = ''
@@ -75,3 +76,7 @@ socket.on('delete-product', data =>{
     limpiarHtml()
     productosHtml(data)
 })
+
+const numero = Math.floor(Math.random() * 999999).toString()
+
+console.log(typeof numero);

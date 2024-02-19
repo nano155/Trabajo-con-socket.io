@@ -67,7 +67,7 @@ export class ProductManager {
         const prev = await this.#readFile()
         this.products = [ ...prev,{...producto}]
             
-        await fs.promises.writeFile(this.path, JSON.stringify(this.products))
+        await fs.promises.writeFile(this.path, JSON.stringify(this.products, null, 2))
         return true
     }
 
@@ -96,7 +96,7 @@ export class ProductManager {
 
         productos = productos.filter(producto => producto.id !== id)
 
-        await fs.promises.writeFile(this.path, JSON.stringify(productos))
+        await fs.promises.writeFile(this.path, JSON.stringify(productos, null, 2))
         console.log(`Producto con el id: ${id}, fue eliminado`);
         return true
     }
@@ -114,7 +114,7 @@ export class ProductManager {
         }
         product.id = id
         prevProduct [userPosition] = product
-        await fs.promises.writeFile(this.path, JSON.stringify(prevProduct))
+        await fs.promises.writeFile(this.path, JSON.stringify(prevProduct, null, 2))
 
         console.log(`El producto con id: ${id} fue actualizado`);
         return true
